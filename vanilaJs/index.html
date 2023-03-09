@@ -7,10 +7,254 @@
 	<title>바닐라JS로 크롬앱 만들기</title>
 	<!-- css -->
 	<link rel="stylesheet" href="static/css/index.css">
+	<style>
+		.box {padding-bottom: 20px; margin-bottom: 30px; border-bottom: 1px solid #ddd;}
+		.text {font-size: 14px; line-height: 150%; font-weight: 500; color: #111; margin-bottom: 10px;}
+		.empha {color: rgb(241, 116, 116); font-size: 14px; line-height: 150%; font-weight: 500;}
+	</style>
 	<!-- js -->
+	<script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
 	<script src="static/js/index.js"></script>
 </head>
 <body>
-	
+	<div class="box">
+		<h2 class="text">string은 문자열이고 ""나 ''안에 써야함<br>console.log("hello, world");</h2>
+		<h2 class="text">숫자는 그냥 적어도 됨<br>console.log(345);</h2>
+		<script>
+			console.log("hello, world");
+			console.log(345);
+		</script>
+	</div>
+	<div class="box">
+		<h2 class="text">variable : 중복 선언도 되고 재할당도 가능함 / let : 중복선언은 안되지만 재할당 가능 / constant : 중복선언도 재할당도 모두 안됨</h2>
+		<h2 class="text">
+			a라는 상수 안에 5라는 숫자값을 넣음<br>
+			const a = 5;<br>
+			console.log(a + 2); (값이 7이 나와야함)<br>
+			const myName = "seulki";<br>
+			console.log(myName);<br>
+			let name = "seulki";<br>
+			console.log(name); (값이 seuli로 나옴)<br>
+			name = "seulkiAhn"; (let 변수명은 변경하지 않았지만 내용은 변경 할 수 있음)<br>
+			console.log(name); (값이 seulkiAhn으로 나옴)
+		</h2>
+		<script>
+			console.log(6 + 2);
+
+			const a = 5;
+			console.log(a + 2);
+
+			const myName = "seulki";
+			console.log(myName);
+
+			let name = "seulki";
+			console.log(name);
+			name = "seulkiAhn";
+			console.log(name);
+		</script>
+	</div>  
+	<div class="box">
+		<h2 class="text">true / false / null(값이 비어있는것) / undefined (변수가 만들어지긴 했지만 값이 없는것)</h2>
+		<h2 class="text">
+			const amIFat = null; (amIFat에 값은 주어졌지만 타입이 null)<br>
+			console.log(amIFat);<br>
+			let something; (값을 주어지지 않음)<br>
+			console.log(something); (undefined로 나옴)
+		</h2>
+		<script>
+			const amIFat = false;
+			console.log(amIFat);
+			let something;
+			console.log(something);
+		</script>
+	</div>
+	<div class="box">
+		<h2 class="text">array배열</h2>
+		<h2 class="text">변수 안에 []를 이용해서 string이나 num을 배열해 줄 수 있음</h2>
+		<h2 class="text">
+			const array = ["mon", "tue", "wed", "thu", "fri", "sat", "sun"];<br>
+			console.log(array); (length가 7)<br>
+			console.log(array[0]); (배열중의 몇번째를 선택하고 싶을때)<br>
+			array.push("day"); (push는 array에 항목을 하나 더 넣어줄 수 있음) <br>
+			console.log(array); (array라는 배열 안에 day라는 값이 추가됨)
+		</h2>
+		<script>
+			// array에 값 넣음
+			const array = ["mon", "tue", "wed", "thu", "fri", "sat", "sun"];
+			console.log(array);
+			console.log(array[3]);
+
+			// array에 또 다른 array 넣기
+			array.push("day"); //push는 array에 항목을 하나 더 넣어줄 수 있음
+			console.log(array);
+		</script>
+	</div>
+	<div class="box">
+		<h2 class="text">object객체</h2>
+		<h2 class="text">jSON방식으로 사용을 많이 함</h2>
+		<h2 class="text">
+			const player = {<br>
+				name: 'seulki',<br>
+				points: 10000,<br>
+				total: 20000<br>
+			};<br>
+			console.log(player);<br>
+			console.log(player.name); // 쓰는 방식이 여러가지 있음<br>
+			console.log(player["name"]); // 쓰는 방식이 여러가지 있음<br>
+			player.name = 'seulkiAhn'; // object안에 name의 데이터를 수정한것<br>
+			player.addData = 'employee'; // object안에 데이터를 추가 할 수도 있음<br>
+			player.points = player.points + 10000; // object에 이미 있는 데이터를 받아와 추가 할 수도 있음<br>
+			console.log(player); // 최종 'player'란 object 데이터가 바뀐 것을 확인 할 수 있음
+		</h2>
+		<script>
+			const player = {
+				name: 'seulki',
+				points: 10000,
+				total: 20000
+			};
+			console.log(player);
+			console.log(player.name); // 쓰는 방식이 여러가지 있음
+			console.log(player["name"]); // 쓰는 방식이 여러가지 있음
+			player.name = 'seulkiAhn'; // object안에 name의 데이터를 수정한것
+			player.addData = 'employee'; // object안에 데이터를 추가 할 수도 있음
+			player.points = player.points + 10000; // object에 이미 있는 데이터를 받아와 추가 할 수도 있음
+			console.log(player); // 최종 'player'란 object 데이터가 바뀐 것을 확인 할 수 있음
+		</script>
+	</div>
+	<div class="box">
+		<h2 class="text">function함수</h2>
+		<h2 class="text">
+			function basic(){<br>
+				console.log("hello basic!");<br>
+			}<br>
+			basic(); // hello basic이 나옴<br>
+			<br>
+			function example(name){ //example이라는 데이터안에 name이란 변수variable이 생김<br>
+				console.log(name); // name이란 변수를 console.log에 넣음<br>
+			}<br>
+			example("seulki"); // name이란 변수를 넣음으로서 example이란 함수안에 데이터를 넣어 호출하면 그대로 나옴<br>
+			example("gyunghyun");<br>
+			<br>
+			function examAge(name, age){<br>
+				console.log(name, age);<br>
+			}<br>
+			examAge("seulki", 29); // 변수명을 여러개 넣을 수도 있음<br>
+			<br>
+			// array를 이용해서 함수를 만듬<br>
+			const nameTag = ["seulki", "gyunghyun", "end"]<br>
+			function hello(nameTag){<br>
+				console.log("hello " + nameTag);<br>
+			};<br>
+			hello(nameTag[0]); // array배열을 이용해서 슬라이드를 이용할때 사용하기도 함<br>
+			<br>
+			// object를 이용해서 함수를 만듬<br>
+			const objName = {<br>
+				name: "seulki",<br>
+				newName: function nameList(newNameList){<br>
+					console.log("hello!" + newNameList);<br>
+				}<br>
+			};<br>
+			objName.newName("gyunghyun"); // 객체안에 'newName'이라는 데이터값의 함수를 들고옴
+		</h2>
+		<script>
+			function basic(){
+				console.log("hello basic!");
+			}
+			basic(); // hello basic이 나옴
+
+			function example(name){ //example이라는 데이터안에 name이란 변수variable이 생김
+				console.log(name); // name이란 변수를 console.log에 넣음
+			}
+			example("seulki"); // name이란 변수를 넣음으로서 example이란 함수안에 데이터를 넣어 호출하면 그대로 나옴
+			example("gyunghyun");
+
+			function examAge(name, age){
+				console.log(name, age);
+			}
+			examAge("seulki", 29); // 변수명을 여러개 넣을 수도 있음
+
+			// array를 이용해서 함수를 만듬
+			const nameTag = ["seulki", "gyunghyun", "end"]
+			function hello(nameTag){
+				console.log("hello " + nameTag);
+			};
+			hello(nameTag[0]); // array배열을 이용해서 슬라이드를 이용할때 사용하기도 함
+
+			// object를 이용해서 함수를 만듬
+			const objName = {
+				name: "seulki",
+				newName: function nameList(newNameList){
+					console.log("hello!" + newNameList);
+				}
+			};
+			objName.newName("gyunghyun"); // 객체안에 'newName'이라는 데이터값의 함수를 들고옴
+		</script>
+	</div>
+	<div class="box">
+		<h2 class="text">return</h2>
+		<h2 class="text">function을 사용할때 결과값을 원하지 않을때가 많지만 만약 결과값을 원할때 return을 이용해서 function 밖과 연결을 하기도 함</h2>
+		<h2 class="text">
+			const age = 95;<br>
+			function calcKorAge(ageOfFore){<br>
+				return ageOfFore + 2; // function안에서 return의 'ageOfFore + 2;'를 실행하면은<br>
+			};<br>
+			<br>
+			const krAge = calcKorAge(age); // 밖에서 function을 실행했을때 'krAge'를 작동하게 만듬/'krAge'는 return 반환값임<br>
+			console.log(krAge); // return없이 단순히 console.log를 실행했을땐 'undefined'가 뜸. 즉, 값을 정의할 수 없음
+		</h2>
+		<script>
+			const age = 95;
+			function calcKorAge(ageOfFore){
+				return ageOfFore + 2; // function안에서 return의 'ageOfFore + 2;'를 실행하면은
+			};
+			
+			const krAge = calcKorAge(age); // 밖에서 function을 실행했을때 'krAge'를 작동하게 만듬/'krAge'는 return 반환값임
+			console.log(krAge); // return없이 단순히 console.log를 실행했을땐 'undefined'가 뜸. 즉, 값을 정의할 수 없음
+		</script>
+	</div>
+	<div class="box">
+		<h2 class="text">if조건문</h2>
+		<h2 class="text">
+			parseInt() // string으로 쓰여진 숫자를 number 숫자로 변경해줌<br>
+			<br>
+			const age1 = parseInt(prompt("write number"));<br>
+			console.log(typeof (age1)); // typeof는 타입을 확인하는 방법<br>
+			<br>
+			isNaN() // number인지 아닌지를 boolean으로 확인해줌<br>
+			<br>
+			const age2 = parseInt(prompt("write number"));<br>
+			console.log(isNaN(age2)); // false가 나오면 숫자라는뜻 true가 나오면 문자라는 뜻<br>
+			<br>
+			조건문 사용할때<br>
+			if(condition){<br>
+				// condition === true<br>
+			}else{<br>
+				//condition === false<br>
+			}
+		</h2>
+		<script>
+			parseInt() // string으로 쓰여진 숫자를 number 숫자로 변경해줌
+			
+			const age1 = parseInt(prompt("write number"));
+			console.log(typeof (age1)); // typeof는 타입을 확인하는 방법
+
+			isNaN() // number인지 아닌지를 boolean으로 확인해줌
+			const age2 = parseInt(prompt("write number"));
+			console.log(isNaN(age2)); // false가 나오면 숫자라는뜻 true가 나오면 문자라는 뜻
+
+			if(condition){
+				// condition === true
+			}else{
+				//condition === false
+			}
+		</script>
+	</div>
+
+	<div class="box">
+		<h2 class="text"></h2>
+		<script>
+
+		</script>
+	</div>
 </body>
 </html>
