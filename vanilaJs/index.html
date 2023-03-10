@@ -4,7 +4,7 @@
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>바닐라JS로 크롬앱 만들기</title>
+	<title>기초 자바스크립트_바닐라JS로 크롬앱 만들기</title>
 	<!-- css -->
 	<link rel="stylesheet" href="static/css/index.css">
 	<style>
@@ -225,35 +225,45 @@
 			const age2 = parseInt(prompt("write number"));<br>
 			console.log(isNaN(age2)); // false가 나오면 숫자라는뜻 true가 나오면 문자라는 뜻<br>
 			<br>
-			조건문 사용할때<br>
+			조건문 사용할때(boolean으로 사용, true 아니면 false로 판단)<br>
 			if(condition){<br>
 				// condition === true<br>
-			}else{<br>
+			} else {<br>
 				//condition === false<br>
-			}
+			}<br>
+			연산자<br>
+			|| = or (둘 중에 하나만 true여도 됨)<br>
+			true || true === true<br>
+			false || true === true<br>
+			true || false === true<br>
+			false || false === false<br>
+			<br>
+			&& = and (둘다 true여야만 함)<br>
+			true && true === true<br>
+			false && true === false<br>
+			true && false === false<br>
+			false && false === false
 		</h2>
 		<script>
 			parseInt() // string으로 쓰여진 숫자를 number 숫자로 변경해줌
 			
-			const age1 = parseInt(prompt("write number"));
-			console.log(typeof (age1)); // typeof는 타입을 확인하는 방법
+			// const age1 = parseInt(prompt("write number"));
+			// console.log(typeof (age1)); // typeof는 타입을 확인하는 방법
 
 			isNaN() // number인지 아닌지를 boolean으로 확인해줌
-			const age2 = parseInt(prompt("write number"));
-			console.log(isNaN(age2)); // false가 나오면 숫자라는뜻 true가 나오면 문자라는 뜻
+			// const age2 = parseInt(prompt("write number"));
+			// console.log(isNaN(age2)); // false가 나오면 숫자라는뜻 true가 나오면 문자라는 뜻
 
-			if(condition){
-				// condition === true
-			}else{
-				//condition === false
+			const age3 = parseInt(prompt("write your age"));
+			if(isNaN(age3) || age3 < 0){
+				console.log("wrtie a real positive number");
+			}else if(age3 < 18){
+				console.log("you are too young");
+			}else if(age3 >= 18 && age3 < 50){
+				console.log("you can drink");
+			}else {
+				console.log("you have to exercise");
 			}
-		</script>
-	</div>
-
-	<div class="box">
-		<h2 class="text"></h2>
-		<script>
-
 		</script>
 	</div>
 </body>
