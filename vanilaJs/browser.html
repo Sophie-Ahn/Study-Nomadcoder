@@ -11,6 +11,12 @@
 		.box {padding-bottom: 20px; margin-bottom: 30px; border-bottom: 1px solid #ddd;}
 		.text {font-size: 14px; line-height: 150%; font-weight: 500; color: #111; margin-bottom: 10px;}
 		.empha {color: rgb(241, 116, 116); font-size: 14px; line-height: 150%; font-weight: 500;}
+
+		body {background: beige;}
+		.h1_color {color: cornflowerblue;}
+		.classList {color: tomato;}
+		.toggle {color: yellowgreen;}
+		.active {color: turquoise;}
 	</style>
 	<!-- js -->
 	<script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
@@ -119,34 +125,98 @@
 		<div class="cssJs">
 			<h1 class="txt_h1">if문 써서 폰트 컬러 변경</h1>
 			<h2 class="text">
-				const txt_h1 = document.querySelector(".cssJs .txt_h1");<br>
-				function txth1(){<br>
-					if(txt_h1.style.color === "blue"){<br>
-						txt_h1.style.color = "tomato";<br>
+				const color = document.querySelector(".cssJs .txt_h1");<br>
+				function colorChange(){<br>
+					const currentColor = color.style.color; // 현재 이 태그의 상태를 말해줌<br>
+					let newColor; // 비어있는 변수<br>
+					if(currentColor === "blue"){<br>
+						newColor = "tomato"; // currentColor가 블루면 newColor가 토마토로 변함<br>
 					}else {<br>
-						txt_h1.style.color = "blue";<br>
+						newColor = "blue";<br>
 					}<br>
+					color.style.color = newColor; // 비어있는 변수에 값을 넣어줌<br>
 				}<br>
-				txt_h1.addEventListener("click", txth1);
+				color.addEventListener("click", colorChange);
 			</h2>
 		</div>
 		<script>
-			const txt_h1 = document.querySelector(".cssJs .txt_h1");
-			function txth1(){
-				if(txt_h1.style.color === "blue"){
-					txt_h1.style.color = "tomato";
+			const color = document.querySelector(".cssJs .txt_h1");
+			function colorChange(){
+				const currentColor = color.style.color; // 현재 이 태그의 상태를 말해줌
+				let newColor; // 비어있는 변수
+				if(currentColor === "blue"){
+					newColor = "tomato"; // currentColor가 블루면 newColor가 토마토로 변함
 				}else {
-					txt_h1.style.color = "blue";
+					newColor = "blue";
 				}
+				color.style.color = newColor; // 비어있는 변수에 값을 넣어줌
 			}
-			txt_h1.addEventListener("click", txth1);
+			color.addEventListener("click", colorChange);
 		</script>
 	</div>
-
 	<div class="box">
-		<h2 class="text"></h2>
+		<h1 class="h1_color">className로 폰트 컬러 변경(className을 쓰면 모든 그 클래스네임을 가진 애들이 변경)</h1>
+		<h2 class="text">
+			const h1 = document.querySelector(".h1_color");<br>
+			function clickColor(){<br>
+				const activeClass = "active";<br>
+				if(h1.className === activeClass){<br>
+					h1.className = "h1_color";<br>
+				}else {<br>
+					h1.className = activeClass;<br>
+				}<br>
+			};<br>
+			h1.addEventListener("click", clickColor);
+		</h2>
+		<h1 class="classList">classList로 폰트 컬러 변경(classList는 class명들중에 contain이란 메소드를 써서 그 애들만 변경하는 것)</h1>
+		<h2 class="text">
+			const h2 = document.querySelector(".classList");<br>
+			function classList(){<br>
+				const classListActive = "active";<br>
+				if(h2.classList.contains(classListActive)){<br>
+					h2.classList.remove(classListActive);<br>
+				}else{<br>
+					h2.classList.add(classListActive);<br>
+				}<br>
+			};<br>
+			h2.addEventListener("click", classList);
+		</h2>
+		<h1 class="toggle">toggle을 이용한 컬러변경</h1>
+		<h2 class="text">
+			const h3 = document.querySelector(".toggle");<br>
+			function toggleClass(){<br>
+				h3.classList.toggle("active");<br>
+			};<br>
+			h3.addEventListener("click", toggleClass);
+		</h2>
 		<script>
+			const h1 = document.querySelector(".h1_color");
+			function clickColor(){
+				const activeClass = "active";
+				if(h1.className === activeClass){
+					h1.className = "h1_color";
+				}else {
+					h1.className = activeClass;
+				}
+			};
+			h1.addEventListener("click", clickColor);
 
+			const h2 = document.querySelector(".classList");
+			function classList(){
+				const classListActive = "active";
+				if(h2.classList.contains(classListActive)){
+					h2.classList.remove(classListActive);
+				}else{
+					h2.classList.add(classListActive);
+				}
+			};
+			h2.addEventListener("click", classList);
+
+			const h3 = document.querySelector(".toggle");
+			function toggleClass(){
+				h3.classList.toggle("active");
+			};
+			h3.addEventListener("click", toggleClass);
 		</script>
 	</div>
 </body>
